@@ -27,7 +27,7 @@ const BotCard = props => {
         onClick={() => props.cardClicked(props.id)}
       >
         <div className="image">
-          <img alt="oh no!" src={props.pic} />
+          {}<img alt="oh no!" src={props.pic} />
         </div>
         <div className="content">
           <div className="header">

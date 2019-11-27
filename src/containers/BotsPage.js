@@ -6,7 +6,9 @@ class BotsPage extends React.Component {
     super()
     this.state = {
       robots: [],
-      armyRobots: []
+      armyRobots: [],
+      specs:false
+
     }
   }
 
@@ -22,13 +24,21 @@ class BotsPage extends React.Component {
   cardClicked = (id) => {
     if(!this.state.armyRobots.find(robot => robot.id === id))
     this.setState({
-      armyRobots: [...this.state.armyRobots, this.state.robots.find(robot => robot.id === id)]
+      armyRobots: [...this.state.armyRobots, this.state.robots.find(robot => robot.id === id)],
+      specs: true
     })
     else{
       this.setState({
-        armyRobots: this.state.armyRobots.filter(robot => robot.id !== id)
+        armyRobots: this.state.armyRobots.filter(robot => robot.id !== id),
+        specs: false
       })
     }
+
+
+  }
+
+  showAllBots = () => {
+
 
   }
 
@@ -41,7 +51,7 @@ class BotsPage extends React.Component {
       {<YourBotArmy cardClicked={this.cardClicked} armyRobots={this.state.armyRobots}/>}
       </div>
       <div>
-      {<BotCollection cardClicked={this.cardClicked} robots={this.state.robots}/>}
+      {<BotCollection showAllBots={this.showAllBots} specs= {this.state.specs} armyRobots={this.state.armyRobots} cardClicked={this.cardClicked} robots={this.state.robots}/>}
       </div>
 </div>
     );
